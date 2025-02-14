@@ -1,6 +1,7 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { authContext } from "../AuthContext/AuthContext";
 
 export const whishListContext = createContext();
 export const WishListContextProvider = ({ children }) => {
@@ -9,7 +10,9 @@ export const WishListContextProvider = ({ children }) => {
   const [dataOfproducts, setDataOfproducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const token = localStorage.getItem("token");
+  const { userToken: token } = useContext(authContext);
+  console.log(token);
+
   const numberOfWishList = dataOfproducts.length;
 
   useEffect(() => {
