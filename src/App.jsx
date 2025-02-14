@@ -4,7 +4,7 @@ import { Home } from "./Components/pages/Home/Home";
 import { Login } from "./Components/pages/Login/Login";
 import { Register } from "./Components/pages/Register/Register";
 import ProtectedRoute from "./Components/protectedRoute/ProtectedRoute";
-import { ProductsPage } from "./Components/pages/products/Products";
+import { ProductsPage } from "./Components/pages/Products/ProductsPage";
 import { ProductDetails } from "./Components/ProductDetails/ProductDetails";
 import { Cart } from "./Components/pages/Cart/Cart";
 import { ProtectedAuth } from "./Components/pages/ProtectedAuth/ProtectedAuth";
