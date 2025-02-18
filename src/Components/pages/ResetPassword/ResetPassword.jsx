@@ -54,13 +54,15 @@ export const ResetPassword = () => {
   });
 
   return (
-    <div className="max-w-lg mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300">
-      <h1 className="text-4xl font-extrabold">Reset password</h1>
-      <p className="text-slate-500 font-bold mt-3">
+    <div className="max-w-lg mx-auto my-10 bg-white dark:bg-gray-900 p-8 rounded-xl shadow shadow-slate-300 dark:shadow-gray-700">
+      <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white">
+        Reset password
+      </h1>
+      <p className="text-slate-500 dark:text-gray-300 font-bold mt-3">
         Fill up the form to reset the password
       </p>
       {messageError && (
-        <p className="font-bold mt-3 capitalize text-red-600 text-xl pt-4 text-center">
+        <p className="font-bold mt-3 capitalize text-red-600 dark:text-red-400 text-xl pt-4 text-center">
           {messageError}
         </p>
       )}
@@ -68,7 +70,9 @@ export const ResetPassword = () => {
       <form className="my-10" onSubmit={formik.handleSubmit}>
         <div className="flex flex-col space-y-5">
           <label htmlFor="email">
-            <p className=" text-slate-700 pb-2 font-semibold">Email address</p>
+            <p className="text-slate-700 dark:text-gray-200 pb-2 font-semibold">
+              Email address
+            </p>
             <input
               value={formik.values.email}
               onBlur={formik.handleBlur}
@@ -76,18 +80,18 @@ export const ResetPassword = () => {
               id="email"
               name="email"
               type="email"
-              className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
+              className="w-full py-3 border border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg px-3 focus:outline-none focus:border-slate-500 dark:focus:border-gray-400 hover:shadow"
               placeholder="Enter email address"
             />
             {formik.touched.email && formik.errors.email && (
-              <p className="text-red-500 text-sm font-bold p-4">
+              <p className="text-red-500 dark:text-red-400 text-sm font-bold p-4">
                 {formik.errors.email}
               </p>
             )}
           </label>
 
           <label htmlFor="newPassword">
-            <p className=" text-slate-700 pb-2 font-semibold">
+            <p className="text-slate-700 dark:text-gray-200 pb-2 font-semibold">
               Enter new Password
             </p>
             <input
@@ -97,18 +101,19 @@ export const ResetPassword = () => {
               id="newPassword"
               name="newPassword"
               type="password"
-              className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
-              placeholder="Enter new Password "
+              className="w-full py-3 border border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg px-3 focus:outline-none focus:border-slate-500 dark:focus:border-gray-400 hover:shadow"
+              placeholder="Enter new Password"
             />
             {formik.touched.newPassword && formik.errors.newPassword && (
-              <p className="text-red-500 text-sm font-bold p-4">
+              <p className="text-red-500 dark:text-red-400 text-sm font-bold p-4">
                 {formik.errors.newPassword}
               </p>
             )}
           </label>
+
           <button
             type="submit"
-            className="w-full py-3 font-medium text-white bg-green-400 duration-300 hover:bg-main rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center"
+            className="w-full py-3 font-medium text-white bg-green-400 dark:bg-green-600 duration-300 hover:bg-main dark:hover:bg-green-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center"
           >
             {isLoading ? (
               <i className="fas fa-spinner fa-spin"></i>

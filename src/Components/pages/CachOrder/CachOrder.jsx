@@ -5,7 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import { QueryClient, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 
 export const CachOrder = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -114,25 +114,25 @@ export const CachOrder = () => {
   });
 
   return (
-    <div className="max-w-lg mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300">
+    <div className="max-w-lg mx-auto my-10 bg-white dark:bg-gray-800 p-8 rounded-xl shadow shadow-slate-300 dark:shadow-gray-700 dark:text-white">
       <h1 className="text-4xl font-semibold capitalize">create order</h1>
-      <p className="text-slate-500 font-bold">
+      <p className="text-slate-500 dark:text-gray-300 font-bold">
         Fill up the form to create order{" "}
         <i className="fa-solid fa-money-bill-1"></i>
       </p>
       {numOfCartItems === 0 && (
-        <p className="text-red-600 text-xl text-center py-5 capitalize font-bold mt-3">
-          Your Cart Is Empity Go to add product in your cart{" "}
+        <p className="text-red-600 dark:text-red-400 text-xl text-center py-5 capitalize font-bold mt-3">
+          Your Cart Is Empty, Go to add product in your cart{" "}
           <i className="fa-solid fa-cart-plus"></i>
         </p>
       )}
       {totalOrderPrice && (
         <>
-          <p className="text-red-600 text-xl text-center py-5 font-bold mt-3">
+          <p className="text-red-600 dark:text-red-400 text-xl text-center py-5 font-bold mt-3">
             Total order : ${totalOrderPrice}
           </p>
-          <p className="capitalize text-center pl-2 font-bold">
-            on of our customers{" "}
+          <p className="capitalize text-center pl-2 font-bold dark:text-gray-300">
+            One of our customers{" "}
             <i className="fa-solid fa-person-military-pointing"></i> will
             communicate <i className="fa-solid fa-phone-volume"></i> with you
             soon <i className="fa-solid fa-truck-fast"></i>
@@ -142,27 +142,32 @@ export const CachOrder = () => {
       <form className="my-10" onSubmit={formik.handleSubmit}>
         <div className="flex flex-col space-y-5">
           <label htmlFor="details">
-            <p className="font-bold text-slate-700 pb-2 capitalize">details </p>
+            <p className="font-bold text-slate-700 dark:text-gray-300 pb-2 capitalize">
+              details{" "}
+            </p>
             <input
               value={formik.values.details}
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               id="details"
               name="details"
               type="text"
-              className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
+              className="w-full py-3 border border-slate-200 dark:border-gray-600 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow dark:bg-gray-700 dark:text-white"
               placeholder="Enter details..."
             />
           </label>
           {formik.errors.details && formik.touched.details && (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
+              className="p-4 mb-4 text-sm text-red-800 dark:text-red-500 rounded-lg bg-red-50 dark:bg-red-900 font-semibold"
               role="alert"
             >
               {formik.errors.details}
             </div>
           )}
           <label htmlFor="phone">
-            <p className="font-bold text-slate-700 pb-2 capitalize">phone </p>
+            <p className="font-bold text-slate-700 dark:text-gray-300 pb-2 capitalize">
+              phone{" "}
+            </p>
             <input
               value={formik.values.phone}
               onChange={formik.handleChange}
@@ -170,33 +175,36 @@ export const CachOrder = () => {
               id="phone"
               name="phone"
               type="tel"
-              className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
+              className="w-full py-3 border border-slate-200 dark:border-gray-600 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow dark:bg-gray-700 dark:text-white"
               placeholder="Enter phone..."
             />
           </label>
           {formik.errors.phone && formik.touched.phone && (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
+              className="p-4 mb-4 text-sm text-red-800 dark:text-red-500 rounded-lg bg-red-50 dark:bg-red-900 font-semibold"
               role="alert"
             >
               {formik.errors.phone}
             </div>
           )}
           <label htmlFor="city">
-            <p className="font-bold text-slate-700 pb-2 capitalize">city </p>
+            <p className="font-bold text-slate-700 dark:text-gray-300 pb-2 capitalize">
+              city{" "}
+            </p>
             <input
               value={formik.values.city}
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               id="city"
               name="city"
               type="text"
-              className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
+              className="w-full py-3 border border-slate-200 dark:border-gray-600 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow dark:bg-gray-700 dark:text-white"
               placeholder="Enter city..."
             />
           </label>
           {formik.errors.city && formik.touched.city && (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
+              className="p-4 mb-4 text-sm text-red-800 dark:text-red-500 rounded-lg bg-red-50 dark:bg-red-900 font-semibold"
               role="alert"
             >
               {formik.errors.city}

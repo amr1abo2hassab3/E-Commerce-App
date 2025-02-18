@@ -59,52 +59,56 @@ export const Login = () => {
 
   return (
     <div className="flex items-start mt-28 justify-center p-4">
-      <div className="max-w-[600px] w-full  bg-white rounded-xl shadow-2xl p-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+      <div className="max-w-[600px] w-full bg-white dark:bg-gray-900 rounded-xl shadow-2xl p-8">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
           Sign In
         </h2>
         <form className="space-y-4" onSubmit={formik.handleSubmit}>
           {errorMessage && (
-            <div className="p-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold">
+            <div className="p-4 text-sm text-red-800 dark:text-red-500 rounded-lg bg-red-50 dark:bg-red-900 font-semibold">
               {errorMessage}
             </div>
           )}
 
           <div className="mb-10">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Email
             </label>
             <input
               type="email"
               name="email"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-main focus:border-main outline-none"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-main focus:border-main outline-none dark:bg-gray-800 dark:text-white"
               placeholder="your@email.com"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.values.email}
+              autoComplete="username"
             />
+
             {formik.errors.email && formik.touched.email && (
-              <div className="text-sm text-red-600 mt-1 font-bold">
+              <div className="text-sm text-red-600 dark:text-red-400 mt-1 font-bold">
                 {formik.errors.email}
               </div>
             )}
           </div>
 
           <div className="!mb-10">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Password
             </label>
             <input
               type="password"
               name="password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-main focus:border-main outline-none"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-main focus:border-main outline-none dark:bg-gray-800 dark:text-white"
               placeholder="••••••••"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.values.password}
+              autoComplete="current-password"
             />
+
             {formik.errors.password && formik.touched.password && (
-              <div className="text-sm text-red-600 mt-1 font-bold">
+              <div className="text-sm text-red-600 dark:text-red-400 mt-1 font-bold">
                 {formik.errors.password}
               </div>
             )}
@@ -114,13 +118,15 @@ export const Login = () => {
             <label className="flex items-center">
               <input
                 type="checkbox"
-                className="rounded border-gray-300 text-main focus:ring-main"
+                className="rounded border-gray-300 dark:border-gray-600 text-main focus:ring-main"
               />
-              <span className="ml-2 text-sm text-gray-600">Remember me</span>
+              <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">
+                Remember me
+              </span>
             </label>
             <Link
               to={"/sendemail"}
-              className="text-sm text-red-600 duration-300 hover:text-main font-semibold"
+              className="text-sm text-red-600 dark:text-red-400 duration-300 hover:text-main font-semibold"
             >
               Forgot password?
             </Link>
@@ -128,18 +134,18 @@ export const Login = () => {
 
           <button
             type="submit"
-            className="w-full bg-green-400 duration-300 hover:bg-main text-white font-medium py-2.5 rounded-lg transition-colors"
+            className="w-full bg-green-400 duration-300 hover:bg-main text-white font-medium py-2.5 rounded-lg transition-colors dark:bg-green-600 dark:hover:bg-main"
             disabled={loading}
           >
             {loading ? <i className="fas fa-spinner fa-spin"></i> : "Sign In"}
           </button>
         </form>
 
-        <div className="mt-6 text-center text-sm text-gray-600 font-bold">
+        <div className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400 font-bold">
           Don't have an account?
           <Link
             to={"/register"}
-            className="text-indigo-600 hover:text-indigo-500 font-medium"
+            className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 font-medium"
           >
             {" "}
             Sign up

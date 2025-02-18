@@ -104,3 +104,7 @@ a:hover {
 .bg-main-light {
     background-color: var(--light-color) !important;
 }
+
+.dark .slick-dots li button:before {
+    color: white !important;
+}

@@ -63,19 +63,19 @@ export const ChangeMyPassword = () => {
   });
 
   return (
-    <div className="max-w-lg mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300">
-      <h1 className="text-4xl font-semibold capitalize">
-        change Your password
+    <div className="max-w-lg mx-auto my-10 bg-white dark:bg-gray-800 p-8 rounded-xl shadow shadow-slate-300 dark:shadow-gray-900">
+      <h1 className="text-4xl font-semibold capitalize text-gray-900 dark:text-white">
+        Change Your Password
       </h1>
-      <p className="text-slate-500 font-bold">
-        Fill up the form to Change Your Password{" "}
+      <p className="text-slate-500 dark:text-gray-300 font-bold">
+        Fill up the form to Change Your Password
       </p>
 
       <form className="my-10" onSubmit={formik.handleSubmit}>
         <div className="flex flex-col space-y-5">
           <label htmlFor="currentPassword">
-            <p className="font-bold text-slate-700 pb-2 capitalize">
-              current Password
+            <p className="font-bold text-slate-700 dark:text-gray-300 pb-2 capitalize">
+              Current Password
             </p>
             <input
               value={formik.values.currentPassword}
@@ -84,22 +84,23 @@ export const ChangeMyPassword = () => {
               id="currentPassword"
               name="currentPassword"
               type="password"
-              className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
-              placeholder="Enter currentPassword..."
+              className="w-full py-3 border border-slate-200 dark:border-gray-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 dark:focus:border-gray-500 hover:shadow dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+              placeholder="Enter current password..."
             />
             {formik.errors.currentPassword &&
               formik.touched.currentPassword && (
                 <div
-                  className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
+                  className="p-4 mb-4 text-sm text-red-800 dark:text-red-300 rounded-lg bg-red-50 dark:bg-red-900 font-semibold"
                   role="alert"
                 >
                   {formik.errors.currentPassword}
                 </div>
               )}
           </label>
+
           <label htmlFor="password">
-            <p className="font-bold text-slate-700 pb-2 capitalize">
-              new password{" "}
+            <p className="font-bold text-slate-700 dark:text-gray-300 pb-2 capitalize">
+              New Password
             </p>
             <input
               value={formik.values.password}
@@ -108,21 +109,22 @@ export const ChangeMyPassword = () => {
               id="password"
               name="password"
               type="password"
-              className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
-              placeholder="Enter password..."
+              className="w-full py-3 border border-slate-200 dark:border-gray-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 dark:focus:border-gray-500 hover:shadow dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+              placeholder="Enter new password..."
             />
             {formik.errors.password && formik.touched.password && (
               <div
-                className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
+                className="p-4 mb-4 text-sm text-red-800 dark:text-red-300 rounded-lg bg-red-50 dark:bg-red-900 font-semibold"
                 role="alert"
               >
                 {formik.errors.password}
               </div>
             )}
           </label>
+
           <label htmlFor="rePassword">
-            <p className="font-bold text-slate-700 pb-2 capitalize">
-              re Password{" "}
+            <p className="font-bold text-slate-700 dark:text-gray-300 pb-2 capitalize">
+              Confirm Password
             </p>
             <input
               value={formik.values.rePassword}
@@ -131,21 +133,22 @@ export const ChangeMyPassword = () => {
               id="rePassword"
               name="rePassword"
               type="password"
-              className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
-              placeholder="Enter rePassword..."
+              className="w-full py-3 border border-slate-200 dark:border-gray-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 dark:focus:border-gray-500 hover:shadow dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+              placeholder="Re-enter new password..."
             />
           </label>
           {formik.errors.rePassword && formik.touched.rePassword && (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
+              className="p-4 mb-4 text-sm text-red-800 dark:text-red-300 rounded-lg bg-red-50 dark:bg-red-900 font-semibold"
               role="alert"
             >
               {formik.errors.rePassword}
             </div>
           )}
+
           <button
             type="submit"
-            className={`w-full py-3 font-medium cursor-pointer text-white bg-green-500 duration-200 hover:bg-main rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center`}
+            className="w-full py-3 font-medium cursor-pointer text-white bg-green-500 dark:bg-blue-600 duration-200 hover:bg-main dark:hover:bg-blue-800 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center"
           >
             {isLoading ? (
               <i className="fas fa-spinner fa-spin"></i>
@@ -165,7 +168,7 @@ export const ChangeMyPassword = () => {
                     d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"
                   />
                 </svg>
-                <span className="font-bold capitalize">change Password</span>
+                <span className="font-bold capitalize">Change Password</span>
               </>
             )}
           </button>

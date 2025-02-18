@@ -1,12 +1,18 @@
-import { CategoryCard } from "../../CategoryCard/CategoryCard";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { HeaderTitle } from "../../HeaderTitle/HeaderTitle";
 import img from "../../../assets/images/all.png";
 import { useGetAllCategories } from "./../../../customHooks/useGetAllCategories";
 import { useGetAllProducts } from "./../../../customHooks/useGetAllProducts";
 import { Loader } from "./../../Loader/LoaderScreen";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { CardItem } from "../../CardItem/CardItem";
+
+const CategoryCard = lazy(() =>
+  import("../../CategoryCard/CategoryCard").then((module) => ({
+    default: module.CategoryCard,
+  }))
+);
+
 export const Category = () => {
   const [dataSameCategory, setDataSameCategory] = useState(null);
   const [dataSame, setDataSame] = useState(null);
@@ -53,6 +59,7 @@ export const Category = () => {
 
   const AllProducts = dataProducts?.data.data;
   const categories = dataCategory?.data.data;
+
   useEffect(() => {
     handleAllProducts();
   }, [dataProducts]);
@@ -65,31 +72,35 @@ export const Category = () => {
         {isError && (
           <p className="text-center text-xl font-bold">{error.message} ❌😫</p>
         )}
-        <CategoryCard
-          name={"All"}
-          image={img}
-          AllProducts={AllProducts}
-          key={"all"}
-          handleGetSameCategory={handleAllProducts}
-        />
-        {categories?.map((cat) => (
+        <Suspense fallback={<Loader />}>
           <CategoryCard
-            key={cat._id}
-            id={cat._id}
-            image={cat.image}
-            name={cat.name}
-            handleGetSameCategory={handleGetSameCategory}
+            name={"All"}
+            image={img}
+            AllProducts={AllProducts}
+            key={"all"}
+            handleGetSameCategory={handleAllProducts}
           />
+        </Suspense>
+        {categories?.map((cat) => (
+          <Suspense key={cat._id} fallback={<Loader />}>
+            <CategoryCard
+              id={cat._id}
+              image={cat.image}
+              name={cat.name}
+              handleGetSameCategory={handleGetSameCategory}
+            />
+          </Suspense>
         ))}
       </div>
       {!dataSameCategory?.results ? (
         <h3 className="font-semibold text-2xl text-red-600 capitalize mt-12 text-center">
-          there are no currently no products form this categroy
+          there are no currently no products form this category
         </h3>
       ) : (
-        <div className="w-1/3 mt-16 mx-auto ">
+        <div className="w-1/3 mt-16 mx-auto">
           <div
-            className={`bg-[#FEFEFE] flex  rounded cursor-pointer transition-all duration-500 rotate-3 shadow-[0px_10px_30px_rgba(0,0,0,0.2)] border-main border`}
+            className={`bg-[#FEFEFE] flex rounded cursor-pointer transition-all duration-500 rotate-3 shadow-[0px_10px_30px_rgba(0,0,0,0.2)]  border-main border
+    dark:bg-gray-800 dark:shadow-[0px_10px_30px_rgba(255,255,255,0.1)] dark:border-gray-500`}
           >
             <div className="bg-main w-[25%] h-[100px] flex justify-center items-center rounded">
               <img
@@ -99,10 +110,14 @@ export const Category = () => {
               />
             </div>
             <div className="w-[75%] ml-9 leading-[1.6] flex flex-col justify-center gap-2">
-              <h4 className="text-xl capitalize font-semibold">{nameSame}</h4>
+              <h4 className="text-xl capitalize font-semibold dark:text-white">
+                {nameSame}
+              </h4>
               {AllProducts && (
-                <p className="text-sm font-normal text-[#555]">
-                  <span className="font-semibold"> {dataSame?.length}</span>{" "}
+                <p className="text-sm font-normal text-[#555] dark:text-gray-300">
+                  <span className="font-semibold dark:text-white">
+                    {dataSame?.length}
+                  </span>{" "}
                   items
                 </p>
               )}
@@ -115,9 +130,6 @@ export const Category = () => {
           <CardItem key={product._id} product={product} />
         ))}
       </div>
-      
     </div>
   );
 };
-
-

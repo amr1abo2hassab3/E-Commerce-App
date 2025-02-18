@@ -27,7 +27,7 @@ export const CardItem = ({ product, color = "#c7d5f1" }) => {
   return (
     <Link
       to={`/productDetails/${product._id}/${product.category._id}`}
-      className="w-full relative shadow-custom rounded-md transition-all duration-300 ease-in-out  cursor-pointer overflow-hidden hover:rotate-[3deg] hover:scale-[0.90]"
+      className="w-full relative shadow-custom rounded-md transition-all duration-300 ease-in-out cursor-pointer overflow-hidden hover:rotate-[3deg] hover:scale-[0.90] dark:bg-gray-800"
     >
       <div
         onClick={(e) => {
@@ -37,29 +37,37 @@ export const CardItem = ({ product, color = "#c7d5f1" }) => {
             handleAddToWishList(e, product._id);
           }
         }}
-        className="absolute transition  duration-200 group flex items-center justify-center top-4 right-4 w-[50px] h-[50px] bg-[#C7D5F1] rounded-full"
+        className="absolute transition duration-200 group flex items-center justify-center top-4 right-4 w-[50px] h-[50px] bg-[#C7D5F1] rounded-full dark:bg-gray-700"
       >
         <i
           className={`fa-solid fa-heart ${
-            idProducts.includes(product._id) && "text-red-600"
+            idProducts.includes(product._id)
+              ? "text-red-600"
+              : "dark:text-white"
           } transition duration-300 group-hover:text-red-600 text-xl`}
         ></i>
       </div>
 
-      <div className={`bg-[${color}] flex justify-center items-center p-3`}>
-        <img src={product.imageCover} className="max-w-full" />
+      <div
+        style={{ background: color }}
+        className="flex justify-center items-center p-3 dark:bg-gray-900"
+      >
+        <img src={product.imageCover} className="max-w-full" loading="lazy" />
       </div>
-      <div className="p-4 min-h-[130px]">
+
+      <div className="p-4 min-h-[130px] dark:text-white">
         <h2 className="text-lg mb-2 font-extrabold capitalize">
           {product.title.split(" ").slice(0, 2).join(" ")}
         </h2>
-        <h3 className="text-lg mb-2 font-bold capitalize">
+        <h3 className="text-lg mb-2 font-bold capitalize dark:text-gray-300">
           {product.category.name}
         </h3>
         <div className="flex items-center justify-between my-2">
-          <span className="text-gray-700 font-bold">${product.price}</span>
+          <span className="text-gray-700 font-bold dark:text-gray-300">
+            ${product.price}
+          </span>
           {product.priceAfterDiscount && (
-            <span className="line-through text-red-500">
+            <span className="line-through text-red-500 dark:text-red-400">
               {"$" + product.priceAfterDiscount}
             </span>
           )}
@@ -69,12 +77,12 @@ export const CardItem = ({ product, color = "#c7d5f1" }) => {
             onClick={(e) => {
               handleAddToCart(e, product._id);
             }}
-            className="bg-main text-white py-1.5 px-4 text-sm rounded-md transition-all duration-300 font-bold border border-transparent hover:!bg-white hover:!text-black hover:!border-main"
+            className="bg-main text-white py-1.5 px-4 text-sm rounded-md transition-all duration-300 font-bold border border-transparent hover:!bg-white hover:!text-black hover:!border-main dark:bg-gray-700 dark:hover:bg-white dark:hover:text-black"
           >
             Add to cart <i className="fa-solid fa-cart-shopping"></i>
           </button>
 
-          <span className="text-gray-700 font-bold">
+          <span className="text-gray-700 font-bold dark:text-yellow-400">
             {product.ratingsAverage}
             <i className="fa-solid fa-star text-rating"></i>
           </span>

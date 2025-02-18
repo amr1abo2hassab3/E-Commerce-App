@@ -10,7 +10,7 @@ export const ItemSearch = ({ products, keyWord, setKeyWord }) => {
         <div className="relative">
           <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
             <svg
-              className="w-5 h-5 text-gray-500"
+              className="w-5 h-5 text-gray-500 dark:text-gray-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -29,12 +29,16 @@ export const ItemSearch = ({ products, keyWord, setKeyWord }) => {
             onChange={(e) => setKeyWord(e.target.value)}
             type="search"
             id="default-search"
-            className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-main focus:border-main"
+            className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg 
+                   dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 
+                   focus:ring-main focus:border-main transition-all duration-300"
             placeholder="Search Any Product here ..."
           />
           <button
             type="submit"
-            className="text-white absolute right-2.5 bottom-2.5 bg-green-400 duration-300 hover:bg-main focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2"
+            className="text-white absolute right-2.5 bottom-2.5 bg-green-400 duration-300 hover:bg-main 
+                   focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2
+                   dark:bg-green-600 dark:hover:bg-main dark:focus:ring-green-700"
           >
             Search
           </button>

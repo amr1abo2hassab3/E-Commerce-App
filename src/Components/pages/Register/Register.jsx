@@ -77,13 +77,16 @@ export const Register = () => {
         <h2 className="text-3xl py-5 font-semibold text-center">
           <span className="text-main">Register</span> Now :{" "}
         </h2>
-        <form className="max-w-[60%] mx-auto" onSubmit={formik.handleSubmit}>
+        <form
+          className="md:max-w-[60%] w-[90%] mx-auto"
+          onSubmit={formik.handleSubmit}
+        >
           <div className="relative pt-3 z-0 w-full mb-5 group">
             <input
               type="text"
               name="name"
               id="name"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-main peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 dark:text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-main peer"
               placeholder=""
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
@@ -97,7 +100,7 @@ export const Register = () => {
             </label>
             {formik.errors.name && formik.touched.name && (
               <div
-                className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
+                className="p-4  mt-2  mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
                 role="alert"
               >
                 {formik.errors.name}
@@ -108,8 +111,9 @@ export const Register = () => {
             <input
               type="email"
               name="email"
+              autoComplete="username"
               id="email"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-main peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 dark:text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-main peer"
               placeholder=" "
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
@@ -123,7 +127,7 @@ export const Register = () => {
             </label>
             {formik.errors.email && formik.touched.email && (
               <div
-                className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
+                className="p-4 mb-4 mt-2 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
                 role="alert"
               >
                 {formik.errors.email}
@@ -131,7 +135,7 @@ export const Register = () => {
             )}
             {errorMessage && (
               <div
-                className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
+                className="p-4 mt-2  mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
                 role="alert"
               >
                 {errorMessage}
@@ -143,8 +147,9 @@ export const Register = () => {
               type="password"
               name="password"
               id="password"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-main peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 dark:text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-main peer"
               placeholder=" "
+              autoComplete="new-password"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.values.password}
@@ -157,7 +162,7 @@ export const Register = () => {
             </label>
             {formik.errors.password && formik.touched.password && (
               <div
-                className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
+                className="p-4 mt-2  mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
                 role="alert"
               >
                 {formik.errors.password}
@@ -168,8 +173,9 @@ export const Register = () => {
             <input
               type="password"
               name="rePassword"
+              autoComplete="new-password"
               id="rePassword"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-main peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 dark:text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-main peer"
               placeholder=" "
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
@@ -183,7 +189,7 @@ export const Register = () => {
             </label>
             {formik.errors.rePassword && formik.touched.rePassword && (
               <div
-                className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
+                className="p-4  mt-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
                 role="alert"
               >
                 {formik.errors.rePassword}
@@ -195,7 +201,7 @@ export const Register = () => {
               type="text"
               name="phone"
               id="phone"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-main peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 dark:text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-main peer"
               placeholder=" "
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
@@ -209,7 +215,7 @@ export const Register = () => {
             </label>
             {formik.errors.phone && formik.touched.phone && (
               <div
-                className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
+                className="p-4 mt-2  mb-4 text-sm text-red-800 rounded-lg bg-red-50 font-semibold"
                 role="alert"
               >
                 {formik.errors.phone}
@@ -222,7 +228,7 @@ export const Register = () => {
           >
             {loading ? <i className="fas fa-spinner fa-spin"></i> : "Submit"}
           </button>
-          <span className="ml-12 font-bold">
+          <span className="ml-12 font-bold mt-5 md:mt-0 inline-block">
             Already have an account?{" "}
             <Link
               className="text-red-500 duration-300 font-extrabold hover:text-main ml-3"

@@ -11,7 +11,6 @@ export const WishListContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { userToken: token } = useContext(authContext);
-  console.log(token);
 
   const numberOfWishList = dataOfproducts.length;
 

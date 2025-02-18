@@ -18,15 +18,22 @@ export const BrandDetails = () => {
 
   return (
     <div className="container mx-auto mt-16">
-      <div className="grid lg:gap-0 gap-3 lg:grid-cols-2 grid-cols-1 items-center justify-center py-[35px] px-[20px] rounded-md bg-[#EDF2FB]">
+      <div
+        className="grid lg:gap-0 gap-3 lg:grid-cols-2 grid-cols-1 items-center justify-center py-[35px] px-[20px] rounded-md 
+    bg-[#EDF2FB] dark:bg-gray-800"
+      >
         <div className="text-center">
-          <h2 className="text-[60px] uppercase font-semibold">
+          <h2 className="text-[60px] uppercase font-semibold dark:text-white">
             {dataDetails?.name}
           </h2>
           <BtnShop name={"shop now"} to={"/"} />
         </div>
-        <div className="flex items-center justify-center group ">
-          <div className="bg-[#c7d5f1] hover:shadow-[0px_20px_50px_rgba(0,0,0,0.2)] w-96 h-96 rounded-full flex justify-center items-center transition-all duration-300 cursor-pointer">
+
+        <div className="flex items-center justify-center group">
+          <div
+            className="bg-[#c7d5f1] hover:shadow-[0px_20px_50px_rgba(0,0,0,0.2)] w-96 h-96 rounded-full flex justify-center items-center 
+        transition-all duration-300 cursor-pointer dark:bg-gray-700 dark:shadow-[0px_20px_50px_rgba(255,255,255,0.1)]"
+          >
             <img
               className="w-56 group-hover:scale-105 group-hover:rotate-6 transition-transform duration-300"
               src={dataDetails?.image}

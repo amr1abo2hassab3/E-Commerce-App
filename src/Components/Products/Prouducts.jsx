@@ -1,8 +1,11 @@
-import axios from "axios";
-import { CardItem } from "../CardItem/CardItem";
 import { Loader } from "../Loader/LoaderScreen";
-import { useQuery } from "@tanstack/react-query";
 import { useGetAllProducts } from "../../customHooks/useGetAllProducts";
+import { lazy, Suspense } from "react";
+const CardItem = lazy(() =>
+  import("../CardItem/CardItem").then((module) => ({
+    default: module.CardItem,
+  }))
+);
 
 export const Prouducts = () => {
   // const [products, setProducts] = useState([]);
@@ -37,7 +40,9 @@ export const Prouducts = () => {
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-cols-1 gap-6">
         {products?.length > 0 &&
           products?.map((product) => (
-            <CardItem key={product.id} product={product} />
+            <Suspense key={product._id} fallback={<Loader />}>
+              <CardItem product={product} />
+            </Suspense>
           ))}
       </div>
     </div>

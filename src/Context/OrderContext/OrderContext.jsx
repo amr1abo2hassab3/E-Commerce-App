@@ -17,7 +17,7 @@ export const OrderContextProvider = ({ children }) => {
   const { data, isLoading } = useQuery({
     queryKey: ["getUserOrders"],
     queryFn: handleGetUserOrders,
-    enabled: !!userToken,
+    enabled: !!userToken && !!userData.id,
   });
 
   const dataOrders = data?.data;

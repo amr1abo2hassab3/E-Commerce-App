@@ -1,19 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Loader } from "../../Loader/LoaderScreen";
-import { CardBrand } from "../../CardBrand/CardBrand";
+import { lazy, Suspense } from "react";
+
+const CardBrand = lazy(() =>
+  import("../../CardBrand/CardBrand").then((module) => ({
+    default: module.CardBrand,
+  }))
+);
 
 export const Brand = () => {
   const handleGetAllBrands = () => {
     return axios.get(`https://ecommerce.routemisr.com/api/v1/brands`);
   };
+
   const { data, isLoading } = useQuery({
     queryKey: ["getAllBrands"],
     queryFn: handleGetAllBrands,
   });
 
   const allBrands = data?.data.data;
-
 
   return (
     <>
@@ -23,7 +29,9 @@ export const Brand = () => {
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
         {allBrands?.map((brand) => (
-          <CardBrand key={brand._id} brand={brand} />
+          <Suspense fallback={<Loader />} key={brand._id}>
+            <CardBrand brand={brand} />
+          </Suspense>
         ))}
       </div>
     </>
